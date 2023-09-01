@@ -24,7 +24,26 @@ function App() {
           <img src={imageProduct} className='h-[500px] w-full object-cover' />
         </section>
         <section>
-          
+          <h3>Sneaker company</h3>
+          <h1>Fall Limited Edition Sneakers</h1>
+          <p>These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.</p>
+          <div>
+            <div>
+              <h2>$125.00</h2>
+              <span>50%</span>
+            </div>
+            <div>
+              $250.00
+            </div>
+          </div>
+          <div>
+            <img src={} />
+            <span>0</span>
+            <img src={} />
+          </div>
+          <button>
+            Add to cart
+          </button>
         </section>
       </main>
     </>
