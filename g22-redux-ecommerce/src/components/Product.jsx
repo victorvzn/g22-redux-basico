@@ -3,7 +3,17 @@ import imageProduct from '../assets/images/image-product-1.jpg'
 import iconMinus from '../assets/images/icon-minus.svg'
 import iconPlus from '../assets/images/icon-plus.svg'
 
+import { useDispatch } from 'react-redux'
+import { addToCart } from '../store/cart/slice'
+
 const Product = () => {
+
+  const dispatch = useDispatch()
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product))
+  }
+
   return (
     <>
       <section className='w-full bg-red-500'>
@@ -27,7 +37,10 @@ const Product = () => {
           <span className='text-2xl font-bold'>0</span>
           <img src={iconPlus} />
         </div>
-        <button className='w-full text-2xl font-bold p-6 text-white rounded-xl flex justify-center gap-6 bg-[#ff7d1b] hover:bg-[#ff7d1b]/80 '>
+        <button
+          className='w-full text-2xl font-bold p-6 text-white rounded-xl flex justify-center gap-6 bg-[#ff7d1b] hover:bg-[#ff7d1b]/80 '
+          onClick={() => handleAddToCart({ id: crypto.randomUUID(), name: 'Fall Limited Edition Sneakers', price: 125, qty: 1 })}
+        >
           <img src={iconCart} className='mt-1' />
           Add to cart
         </button>

@@ -3,11 +3,22 @@ import iconAvatar from '../assets/images/image-avatar.png'
 import iconCart from '../assets/images/icon-cart.svg'
 import { useState } from 'react'
 
+import { useSelector, useDispatch } from 'react-redux'
+import { removeFromCart } from '../store/cart/slice'
+
 const Header = () => {
   const [openCart, setOpenCart] = useState(false)
 
+  const dispatch = useDispatch()
+
+  const cart = useSelector(state => state.cart)
+
   const handleOpenCart = () => {
     setOpenCart(!openCart)
+  }
+
+  const handleRemoveFromCart = (productId) => {
+    dispatch(removeFromCart(productId))
   }
 
   return (
@@ -20,22 +31,28 @@ const Header = () => {
         <button className='cursor-pointer' onClick={handleOpenCart}>
           <img src={iconCart} alt="icono del carrito de compras" />
         </button>
+
         {openCart &&
-          <div className='absolute top-24 right-0  w-60 h-80 p-4 rounded-xl bg-white shadow-lg'>
+          <div className='absolute top-24 right-0  w-96 h-80 p-4 rounded-xl bg-white shadow-lg'>
             <h3 className='text-xl font-bold mb-4'>Shopping cart</h3>
+
+            {/* {JSON.stringify(cart)} */}
+
             <div>
-              <div className='flex justify-between hover:bg-gray-200 p-2 rounded-xl'>
-                Product 1
-                <button className='bg-red-500 rounded-full w-8 h-8 text-white font-bold'>X</button>
+              {cart.map(product => (
+                <div
+                  className='flex justify-between hover:bg-gray-200 p-2 rounded-xl'
+                  key={product.id}
+                >
+                  {product.name}
+                <button
+                  className='bg-red-500 rounded-full w-8 h-8 text-white font-bold'
+                  onClick={() => handleRemoveFromCart(product.id)}
+                >
+                  X
+                </button>
               </div>
-              <div className='flex justify-between hover:bg-gray-200 p-2 rounded-xl'>
-                Product 1
-                <button className='bg-red-500 rounded-full w-8 h-8 text-white font-bold'>X</button>
-              </div>
-              <div className='flex justify-between hover:bg-gray-200 p-2 rounded-xl'>
-                Product 1
-                <button className='bg-red-500 rounded-full w-8 h-8 text-white font-bold'>X</button>
-              </div>
+              ))}
             </div>
           </div>
         }
