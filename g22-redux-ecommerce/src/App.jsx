@@ -1,34 +1,19 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import iconMenu from './assets/images/icon-menu.svg'
+import iconCart from './assets/images/icon-cart.svg'
+import iconAvatar from './assets/images/image-avatar.png'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <header className='flex justify-between h-20 bg-red-400'>
+      <div className='flex items-center'>
+        <img src={iconMenu} alt="menu desplegable" />
+        <h1 className="font-['Kumbh Sans'] font-extrabold text-6xl">sneakers</h1>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div className='flex items-center'>
+        <img src={iconCart} alt="icono del carrito de compras" />
+        <img src={iconAvatar} alt="avatar del usuario" />
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </header>
   )
 }
 
